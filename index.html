@@ -56,8 +56,8 @@
         <p>
           This tool generates QR code labels for the
           <abbr title="Archive Serial Number">ASN</abbr> feature. You can
-          generate labels for up to 189 documents at once. The labels are
-          formatted to <strong>fit on Avery L4731REV-25 labels</strong>.
+          generate labels for up to 112 documents at once. The labels are
+          formatted to <strong>fit on Herma 4211 labels</strong>.
         </p>
 
         <p>
@@ -99,12 +99,12 @@
               <p
                 class="prose prose-sm prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-700 max-w-none"
               >
-                The number of labels generated will be 7 x 27 = 189. This means
+                The number of labels generated will be 7 x 16 = 112. This means
                 the <strong>next batch</strong> of labels should
                 <strong
                   >start with
-                  <span x-text="parseInt(startNumber, 10) + 189"
-                    >190</span
+                  <span x-text="parseInt(startNumber, 10) + 7 * 16"
+                    ></span
                   ></strong
                 >.
               </p>
@@ -199,9 +199,9 @@
       <!-- Display QR Code Labels -->
       <ol class="grid grid-cols-7 gap-x-[2.55mm]">
         <template x-for="label in labels">
-          <li class="h-[10mm] w-[25.4mm]">
+          <li class="h-[16.93mm] w-[25.4mm]">
             <div
-              class="flex justify-evenly h-[9mm] w-[24.4mm] items-center border-[0.5mm] odd:border-blue-500 even:border-red-300"
+              class="flex justify-evenly h-[15.93mm] w-[24.4mm] items-center border-[0.5mm] odd:border-blue-500 even:border-red-300"
               :class="{'even:border-transparent odd:border-transparent': !borderToggle}"
             >
               <img
@@ -209,7 +209,7 @@
                 alt=""
                 width="100"
                 height="100"
-                class="mr-[0.5mm] aspect-square h-[9mm] w-[9mm] flex-none"
+                class="mr-[0.5mm] aspect-square h-[14mm] w-[14mm] flex-none"
                 referrerpolicy="no-referrer"
               />
               <div
@@ -271,7 +271,7 @@
 
           generateLabels() {
             this.labels = [];
-            let totalLabels = 7 * 27; // 7 columns x 27 rows
+            let totalLabels = 7 * 16; // 7 columns x 16 rows
             let startNumberInt = parseInt(this.startNumber, 10); // Ensure startNumber is an integer
             let leadingZerosInt = parseInt(this.leadingZeros, 10); // Ensure leadingZeros is an integer
             for (let i = 0; i < totalLabels; i++) {
